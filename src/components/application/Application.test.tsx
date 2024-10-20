@@ -1,33 +1,73 @@
-
-
-import { render,screen } from "@testing-library/react";
+import { getByRole, render, screen } from "@testing-library/react";
 import Application from "./Application";
 
+describe("application", () => {
+  test("renders correctly for getByRole", () => {
+    render(<Application />);
+    const pageHeading = screen.getByRole("heading", {
+      level: 1,
+    });
+    expect(pageHeading).toBeInTheDocument();
 
-describe("application",()=>{
-    test("renders correctly",()=>{
-        render(<Application/>)
-        const textelement=screen.getByRole("textbox");
-        expect(textelement).toBeInTheDocument();
+    const sectionHeading = screen.getByRole("heading", {
+      level: 2,
+    });
+    expect(sectionHeading).toBeInTheDocument();
 
-        const job_location=screen.getByRole("combobox");
-        expect(job_location).toBeInTheDocument();
+    const textelement = screen.getByRole("textbox", { name: "Name" });
+    expect(textelement).toBeInTheDocument();
 
-        const termsElement=screen.getByRole("checkbox");
-        expect(termsElement).toBeInTheDocument();
+    const bioElement = screen.getByRole("textbox", { name: "Bio" });
+    expect(bioElement).toBeInTheDocument();
 
+    const job_location = screen.getByRole("combobox");
+    expect(job_location).toBeInTheDocument();
 
-        const submitBtnElement=screen.getByRole("button");
-        expect(submitBtnElement).toBeInTheDocument();
+    const submitBtnElement = screen.getByRole("button");
+    expect(submitBtnElement).toBeInTheDocument();
+  });
+  test("render correctly for getByLabelText", () => {
+    render(<Application />);
+    const nameElement = screen.getByLabelText("Name");
+    expect(nameElement).toBeInTheDocument();
 
+    const termsElement = screen.getByLabelText(
+      "I agree to the terms and conditions"
+    );
+    expect(termsElement).toBeInTheDocument();
 
+    const selectElement = screen.getByLabelText("Job location", {
+      selector: "select",
+    });
+  });
 
-    })
-  
-})
+  test("render correctly for getByPlaceholderText", () => {
+    render(<Application />);
+    const nameElement = screen.getByPlaceholderText("fullName");
+    expect(nameElement).toBeInTheDocument();
+  });
 
+  test("render correctly for  getByText", () => {
+    render(<Application />);
+    const paraElement = screen.getByText("All fields are mandatory");
+    expect(paraElement).toBeInTheDocument();
+  });
 
+  test("render correctly for getByDisplayValue", () => {
+    render(<Application />);
+    const nameElement = screen.getByDisplayValue("saurabh");
+    expect(nameElement).toBeInTheDocument();
+  });
 
+  test("render correctly for getByTitle", () => {
+    render(<Application />);
+    const closeElement = screen.getByTitle("close");
+    expect(closeElement).toBeInTheDocument();
+  });
 
-
-
+  test("render correctly for getByTestId", () => {
+    render(<Application />);
+    const dataTestIdElement = screen.getByTestId("custom div");
+    expect(dataTestIdElement).toBeInTheDocument();
+  });
+});
