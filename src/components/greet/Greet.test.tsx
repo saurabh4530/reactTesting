@@ -23,6 +23,12 @@ describe("Greet", () => {
       const textElement = screen.getByText(/hello/i);
       expect(textElement).toBeInTheDocument();
     });
+    test("check for Greet correctly 2", () => {
+      render(<Greet/>);
+
+      const textElement = screen.getByText(/hello/i);
+      expect(textElement).toBeInTheDocument();
+    });
 
     test("check for greet with name", () => {
       render(<Greet name="saurabh" />);
