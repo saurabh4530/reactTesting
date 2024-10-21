@@ -1,8 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
+
 import { SkillsProps } from './Skills.type'
 
 function Skills(props:SkillsProps) {
     const {skills}=props
+    const [isLoggedIn,setIsLoggedIn]=useState(false)
   return (
     <>
     <ul>
@@ -12,6 +14,13 @@ function Skills(props:SkillsProps) {
             })
         }
     </ul>
+    {isLoggedIn?(<button>start learning</button>
+    ):(<button onClick={()=>{setIsLoggedIn(true)}}>login</button>)
+    
+
+    
+    }
+
     </>)
 }
 
