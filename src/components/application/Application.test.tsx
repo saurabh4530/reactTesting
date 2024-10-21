@@ -53,6 +53,7 @@ describe("application", () => {
     expect(paraElement).toBeInTheDocument();
   });
 
+
   test("render correctly for getByDisplayValue", () => {
     render(<Application />);
     const nameElement = screen.getByDisplayValue("saurabh");
@@ -71,3 +72,24 @@ describe("application", () => {
     expect(dataTestIdElement).toBeInTheDocument();
   });
 });
+
+describe("textmatch using string,regEx,custom function",()=>{
+  test("render correctly for  getByText using string", () => {
+    render(<Application />);
+    const paraElement = screen.getByText("All fields are mandatory");
+    // const paraElement = screen.getByText("mandatory",{exact:false});w
+    expect(paraElement).toBeInTheDocument();
+  });
+  test("render correctly for  getByText using regEx", () => {
+    render(<Application />);
+    const paraElement = screen.getByText(/All/);
+    // const paraElement = screen.getByText(/all/i);
+    expect(paraElement).toBeInTheDocument();
+  });
+  test("render correctly for  getByText using custom function", () => {
+    render(<Application />);
+    const paraElement = screen.getByText((content)=>content.startsWith("All"));
+  
+    expect(paraElement).toBeInTheDocument();
+  });
+})
