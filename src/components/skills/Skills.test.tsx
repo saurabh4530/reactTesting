@@ -1,5 +1,5 @@
 import Skills from "./Skills";
-import { render,screen } from "@testing-library/react";
+import { findByRole, render,screen } from "@testing-library/react";
 
 describe("skills",()=>{
     const skills=["html","css","js" ]
@@ -13,7 +13,27 @@ describe("skills",()=>{
         render(<Skills skills={skills}/>)
         const listElement=screen.queryAllByRole("listitem");
         expect(listElement).toHaveLength(skills.length)
+    });
+    test("renders login button",()=>{
+        render(<Skills skills={skills}/>)
+        const loginBtn=screen.getByRole("button",{name:"login"});
+        expect(loginBtn).toBeInTheDocument();
+    });
+    test(" start learning button is not rendered ",()=>{
+        render(<Skills skills={skills}/>)
+        const startlearningbtn=screen.queryByRole("button",{name:"start learning"});
+        expect(startlearningbtn).not.toBeInTheDocument();
+    });
+
+    test("start learning button is eventually display",async()=>{
+        render(<Skills skills={skills}/>)
+            const startlearningbtn= await screen.findByRole("button",{name:"start learning"},
+                {timeout:1000}
+            )
+            expect(startlearningbtn).toBeInTheDocument();
+        
     })
+
 })
 
 

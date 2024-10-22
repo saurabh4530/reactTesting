@@ -77,7 +77,7 @@ describe("textmatch using string,regEx,custom function",()=>{
   test("render correctly for  getByText using string", () => {
     render(<Application />);
     const paraElement = screen.getByText("All fields are mandatory");
-    // const paraElement = screen.getByText("mandatory",{exact:false});w
+    // const paraElement = screen.getByText("mandatory",{exact:false});
     expect(paraElement).toBeInTheDocument();
   });
   test("render correctly for  getByText using regEx", () => {
