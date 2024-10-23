@@ -1,7 +1,7 @@
 // import { render, screen } from '@testing-library/react'
-// import  Users  from './Users'
-// import  {rest} from 'msw'
-// import {server} from "../mocks/server"
+// import  Users from './Users'
+// import {rest} from "msw"
+// import  {server}  from "../mocks/server"
 
 // describe('Users', () => {
 //   test('renders correctly', () => {
@@ -13,7 +13,7 @@
 //   test('renders a list of users', async () => {
 //     render(<Users />)
 //     const users = await screen.findAllByRole('listitem')
-//     expect(users).toHaveLength(3)
+//     expect(users).toHaveLength(2)
 //   })
 
 //   test('renders error', async () => {
