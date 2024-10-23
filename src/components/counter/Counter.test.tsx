@@ -72,6 +72,7 @@ describe("counter",()=>{
 
 
      })
+     // handling by using tab btn of keyboard
      test("elements are focused in right orders",async()=>{
         userEvent.setup()
         render(<Counter/>)
